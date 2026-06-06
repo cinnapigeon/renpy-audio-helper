@@ -2,7 +2,7 @@
   "name": "renpy-audio-helper",
   "displayName": "Ren'Py Audio Helper",
   "description": "快速插入 Ren'Py 音频命令的辅助工具",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "your-publisher-name",
   "repository": {
     "type": "git",
@@ -26,11 +26,20 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "renpy-audio-container",
+          "title": "Ren'Py Audio",
+          "icon": "resources/audio-icon.svg"
+        }
+      ]
+    },
     "views": {
-      "explorer": [
+      "renpy-audio-container": [
         {
           "id": "renpyAudioExplorer",
-          "name": "Ren'Py Audio",
+          "name": "音频文件",
           "when": "workspaceHasRenpyProject"
         }
       ]
