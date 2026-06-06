@@ -1,0 +1,103 @@
+{
+  "name": "renpy-audio-helper",
+  "displayName": "Ren'Py Audio Helper",
+  "description": "快速插入 Ren'Py 音频命令的辅助工具",
+  "version": "0.1.0",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "renpy",
+    "visual novel",
+    "audio",
+    "game development"
+  ],
+  "activationEvents": [
+    "onLanguage:renpy",
+    "workspaceContains:**/*.rpy"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "renpyAudioExplorer",
+          "name": "Ren'Py Audio",
+          "when": "workspaceHasRenpyProject"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "renpyAudioHelper.refreshAudioFiles",
+        "title": "刷新音频文件",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "renpyAudioHelper.playAudio",
+        "title": "播放音频",
+        "icon": "$(play)"
+      },
+      {
+        "command": "renpyAudioHelper.stopAudio",
+        "title": "停止播放",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "renpyAudioHelper.insertAudioCommand",
+        "title": "插入音频命令"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "renpyAudioHelper.refreshAudioFiles",
+          "when": "view == renpyAudioExplorer",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "renpyAudioHelper.playAudio",
+          "when": "view == renpyAudioExplorer && viewItem == audioFile",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Ren'Py Audio Helper",
+      "properties": {
+        "renpyAudioHelper.audioFolderPath": {
+          "type": "string",
+          "default": "game/audio",
+          "description": "音频文件夹相对于工作区的路径"
+        },
+        "renpyAudioHelper.supportedFormats": {
+          "type": "array",
+          "default": [".mp3", ".ogg", ".wav", ".opus", ".flac"],
+          "description": "支持的音频文件格式"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "eslint": "^8.x",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {}
+}
