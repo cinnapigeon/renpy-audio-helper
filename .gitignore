@@ -4,3 +4,4 @@ out
 release-notes.md
 .vscode-test
 .DS_Store
+dist/*.vsix
