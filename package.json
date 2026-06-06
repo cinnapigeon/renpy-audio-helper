@@ -4,6 +4,10 @@
   "description": "快速插入 Ren'Py 音频命令的辅助工具",
   "version": "0.1.0",
   "publisher": "your-publisher-name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cinnapigeon/renpy-audio-helper"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
